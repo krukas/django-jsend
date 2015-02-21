@@ -1,3 +1,6 @@
 __pycache__/
 *.py[cod]
 env
+MANIFEST
+dist/
+django_jsend.egg-info/
