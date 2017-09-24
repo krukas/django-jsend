@@ -12,6 +12,7 @@ Usage
 =====
 
 .. code:: python
+
     from django_jsend import JsendView
     
     class CustomJsendView(JsendView):
