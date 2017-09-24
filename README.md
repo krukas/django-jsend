@@ -10,20 +10,19 @@ To install the Django library:
 
 Usage
 =====
+```python
+from django_jsend import JsendView
 
-.. code:: python
+class CustomJsendView(JsendView):
 
-    from django_jsend import JsendView
-    
-    class CustomJsendView(JsendView):
+    def handle_request(self, request, param_id=None):
+        if not param_id:
+            raise Exception('Param id could not be empty')
+       return {
+            'some': 'date',
+            'object': param_id,
+       }
 
-    	def handle_request(self, request, param_id=None):
-    	    if not param_id:
-    	        raise Exception('Param id could not be empty')
-    	   return {
-    	        'some': 'date',
-    	        'object': param_id,
-    	   }
-    
-    # urls
-    url(r'^custom/(?P<param_id>\w+)/$', CustomJsendView.as_view(), name='custom')
+# urls
+url(r'^custom/(?P<param_id>\w+)/$', CustomJsendView.as_view(), name='custom')
+```
