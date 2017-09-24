@@ -15,9 +15,13 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import json
+import logging
 
 from django.views.generic import View
 from django.http import HttpResponse
+
+logger = logging.getLogger(__name__)
+
 
 class JsendView(View):
 	"""Django view for sending JSON response by the JSend specification
@@ -44,6 +48,7 @@ class JsendView(View):
 		try:
 			data = self.handle_request(request, *args, **kwargs)
 		except Exception as e:
+			logger.exception(e)
 			self.status = self.ERROR
 			self.message = str(e)
 
