@@ -18,7 +18,7 @@ import json
 import logging
 
 from django.views.generic import View
-from django.http import HttpResponse
+from django.http import JsonResponse
 
 logger = logging.getLogger(__name__)
 
@@ -62,7 +62,7 @@ class JsendView(View):
 				'status': self.status,
 				'data': data
 			}
-		response = HttpResponse(json.dumps(jsend), content_type="application/json")
+		response = JsonResponse(jsend)
 		if self.allow_cors:
 			response['Access-Control-Allow-Origin'] = "*"
 		return response
